@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #080a0d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: #080a0d;
+  color: #ffffff;
+}
+
+::selection {
+  background: #c5a46d;
+  color: #080a0d;
+}
+
+.glass {
+  background: rgba(20, 23, 28, 0.72);
+  border: 1px solid rgba(197, 164, 109, 0.28);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.leaflet-container {
+  background: #14171c;
+  font-family: inherit;
+}
+
+.aurelia-pin span {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #c5a46d;
+  box-shadow: 0 0 0 6px rgba(197, 164, 109, 0.25);
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #14171c;
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a3038;
+  border-radius: 999px;
+}
