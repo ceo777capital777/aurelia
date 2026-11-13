@@ -1,0 +1,32 @@
+# Aurelia Residence — Render Blueprint.
+# The web service boots without a database: apartments come from typed seed data
+# and leads are stored in memory / data/leads.json. When DATABASE_URL is present
+# (wired below), `npm start` runs `prisma db push` and the API uses PostgreSQL.
+
+databases:
+  - name: aurelia-db
+    plan: basic-256mb
+    databaseName: aurelia
+    user: aurelia
+
+services:
+  - type: web
+    name: aurelia-residence
+    runtime: node
+    plan: starter
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: aurelia-db
+          property: connectionString
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false

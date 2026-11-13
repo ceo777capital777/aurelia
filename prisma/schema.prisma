@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Apartment {
+  id        String @id
+  number    String @unique
+  floor     Int
+  slot      String
+  area      Float
+  bedrooms  Int
+  bathrooms Int
+  type      String
+  price     Int
+  status    String
+  view      String
+  features  String
+  layout    String
+
+  @@index([floor])
+}
+
+model Lead {
+  id              String   @id
+  name            String
+  phone           String
+  email           String
+  message         String   @default("")
+  apartmentId     String   @default("")
+  apartmentNumber String   @default("")
+  floor           Int      @default(0)
+  area            Float    @default(0)
+  price           Int      @default(0)
+  status          String   @default("")
+  createdAt       DateTime @default(now())
+}
